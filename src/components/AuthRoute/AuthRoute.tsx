@@ -12,8 +12,6 @@ const AuthRoute = ({}: ChildrenProps) => {
     (state: RootState) => state.authReducer.isLoggedIn
   );
 
-  console.log("isLoggedIn", isLoggedIn);
-
   if (!isLoggedIn) {
     return <Outlet />;
   }

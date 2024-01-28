@@ -29,6 +29,13 @@ export const authSlice = createSlice({
       state = { ...state, isLoggedIn: true, user: action.payload };
       return state;
     },
+    signout: (state) => {
+      return {
+        ...state,
+        isLoggedIn: false,
+        user: { name: "", email: "", isAdmin: false },
+      };
+    },
     getUser: (state) => {
       const user = customLocalStorage.getData("user");
       if (!user) {
@@ -42,5 +49,5 @@ export const authSlice = createSlice({
   },
 });
 
-export const { login, signup, getUser } = authSlice.actions;
+export const { login, signup, getUser, signout } = authSlice.actions;
 export default authSlice.reducer;

@@ -1,0 +1,38 @@
+.navbar-container {
+  background-color: #252424;
+  color: whitesmoke;
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 30px;
+  flex-wrap: wrap;
+  align-items: center;
+  width: 100%;
+}
+
+.site-title {
+  font-size: 25px;
+  font-weight: 500;
+  color: whitesmoke;
+}
+
+.navbar-user-name {
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.navbar-right-section {
+  display: flex;
+  width: 30%;
+  gap: 20px;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.navbar-navigation-section {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 20px;
+}

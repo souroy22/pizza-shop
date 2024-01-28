@@ -81,6 +81,7 @@ const Signup = () => {
         data.password
       );
       const user = userCredential.user;
+      // user.additionalUserInfo.isAdmin = true;
       await updateProfile(user, { displayName: data.name });
       navigate("/");
       setData({ name: "", email: "", password: "" });

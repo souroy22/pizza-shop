@@ -5,9 +5,11 @@ import EmailIcon from "@mui/icons-material/Email";
 import PasswordIcon from "@mui/icons-material/Password";
 import AuthContainer from "../../components/authpage/AuthContainer";
 import ButtonComponent from "../../components/button/ButtonComponent";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./style.css";
 import { validateEmail } from "../../utils/checkForValidEmail";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../../firebase/firebaseConfig";
 
 type DataType = {
   email: string;
@@ -22,6 +24,8 @@ const Login = () => {
   });
   const [check, setCheck] = useState<boolean>(true);
   const [loading, setLoading] = useState<boolean>(false);
+
+  const navigate = useNavigate();
 
   const checkForErrors = (values: DataType) => {
     const newErrors = { email: "", password: "" };
@@ -53,8 +57,21 @@ const Login = () => {
     setData(newData);
   };
 
-  const handleClick = () => {
+  const handleClick = async () => {
     setLoading(true);
+    try {
+      await signInWithEmailAndPassword(auth, data.email, data.password);
+      // const user = userCredential.user;
+      navigate("/");
+      setData({ email: "", password: "" });
+    } catch (error) {
+      let errorMessage = "Failed to do something exceptional";
+      if (error instanceof Error) {
+        errorMessage = error.message;
+      }
+      console.log(errorMessage);
+    }
+    setLoading(false);
   };
 
   const isDisabled = (errors: DataType) => {

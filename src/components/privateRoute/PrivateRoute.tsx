@@ -12,12 +12,10 @@ const PrivateRoute = ({}: ChildrenProps) => {
     (state: RootState) => state.authReducer.isLoggedIn
   );
 
-  console.log("isLoggedIn", isLoggedIn);
-
   if (isLoggedIn) {
     return <Outlet />;
   }
-  return <Navigate to="/signup" />;
+  return <Navigate to="/signin" />;
 };
 
 export default PrivateRoute;

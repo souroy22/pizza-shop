@@ -3,31 +3,45 @@ import RouterSection from "./RouterSection";
 import { useEffect } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./firebase/firebaseConfig";
-import { getUser, signup } from "./store/auth/authReducer";
+import { signup } from "./store/auth/authReducer";
 import { useDispatch } from "react-redux";
+import firebase from "firebase/compat/app";
+import "firebase/compat/firestore";
 
 const App = () => {
   const dispatch = useDispatch();
 
-  // const isLoggedIn = useSelector(
-  //   (state: RootState) => state.authReducer.isLoggedIn
-  // );
-
-  useEffect(() => {
-    dispatch(getUser());
-    onAuthStateChanged(auth, (user) => {
+  const checkUser = async () => {
+    await onAuthStateChanged(auth, async (user) => {
       if (user) {
-        // dispatch(
-        //   signup({
-        //     name: user.displayName || "",
-        //     email: user.email || "",
-        //     isAdmin: false,
-        //   })
-        // );
+        const userDoc = await firebase
+          .firestore()
+          .collection("users")
+          .doc(user.uid)
+          .get();
+        let isAdmin = false;
+        if (userDoc.exists) {
+          const userData = userDoc.data();
+          isAdmin = userData?.isAdmin || false;
+        }
+        console.log("Is Admin", isAdmin);
+        dispatch(
+          signup({
+            name: user.displayName || "",
+            email: user.email || "",
+            isAdmin: isAdmin,
+          })
+        );
+
+        console.log("User Data", user);
       } else {
         console.log("user is logged out");
       }
     });
+  };
+
+  useEffect(() => {
+    checkUser();
   }, []);
 
   return (
