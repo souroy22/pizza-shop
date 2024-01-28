@@ -1,0 +1,59 @@
+.auth-container {
+  background-color: black;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 30px 50px;
+}
+
+.left-section {
+  width: 50%;
+}
+
+.auth-section-image {
+  height: 95%;
+  width: 90%;
+}
+
+.right-section {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  /* border: 1px solid red; */
+  justify-content: center;
+  padding: 0 50px;
+}
+
+.form-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.welcome-text {
+  color: orange;
+  letter-spacing: 0.8px;
+  margin-bottom: 5px;
+  font-size: 70px;
+  font-weight: 400;
+  line-height: 70px;
+}
+
+.greeting-text {
+  color: whitesmoke;
+  font-weight: 300;
+  letter-spacing: 0.8px;
+  padding-left: 10px;
+  font-size: 15px;
+}
+
+.child-container {
+  padding-left: 10px;
+  margin-top: 30px;
+}
