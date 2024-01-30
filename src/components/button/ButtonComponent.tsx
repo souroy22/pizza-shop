@@ -1,5 +1,5 @@
 import { Button, CircularProgress } from "@mui/material";
-import Box from "@mui/material/Box";
+import { Box } from "@mui/material";
 
 type PropType = {
   text: string;

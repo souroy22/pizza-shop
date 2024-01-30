@@ -1,4 +1,4 @@
-import Box from "@mui/material/Box";
+import { Box } from "@mui/material";
 import TextInput from "../../components/input/TextInput";
 import { useState } from "react";
 import EmailIcon from "@mui/icons-material/Email";

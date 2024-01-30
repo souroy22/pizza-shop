@@ -1,4 +1,4 @@
-import Box from "@mui/material/Box";
+import { Box } from "@mui/material";
 import { signOut } from "firebase/auth";
 import { auth } from "../../firebase/firebaseConfig";
 import { Link, useNavigate } from "react-router-dom";
@@ -47,7 +47,14 @@ const Navbar = () => {
               </Button>
             </Link>
           )}
-          <Button onClick={handleSignout} variant="contained">
+          <Button
+            sx={{
+              backgroundColor: "red",
+              "&:hover": { backgroundColor: "#ab1212" },
+            }}
+            onClick={handleSignout}
+            variant="contained"
+          >
             <ExitToAppIcon sx={{ marginRight: "3px" }} />
             Sign out
           </Button>

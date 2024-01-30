@@ -1,6 +1,6 @@
 import TextField from "@mui/material/TextField";
 import InputAdornment from "@mui/material/InputAdornment";
-import Box from "@mui/material/Box";
+import { Box } from "@mui/material";
 import { SvgIconComponent } from "@mui/icons-material";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
@@ -10,7 +10,7 @@ import { IconButton } from "@mui/material";
 type InputType = "text" | "number" | "password" | "email";
 
 type PropType = {
-  IconComponent: SvgIconComponent;
+  IconComponent?: SvgIconComponent;
   name: string;
   value: string;
   handleChange: (name: string, value: string) => void;
@@ -69,10 +69,12 @@ const TextInput = ({
         }}
         InputProps={{
           disableUnderline: true,
-          startAdornment: (
+          startAdornment: IconComponent ? (
             <InputAdornment position="start">
               <IconComponent />
             </InputAdornment>
+          ) : (
+            <></>
           ),
           endAdornment:
             type === "password" ? (
