@@ -19,12 +19,12 @@ export const pizzaSlice = createSlice({
   name: "pizza",
   initialState,
   reducers: {
-    getAllSizes: (state, action: PayloadAction<PizzaType[]>) => {
+    getPizza: (state, action: PayloadAction<PizzaType[]>) => {
       state = { ...state, pizza: action.payload };
       return state;
     },
   },
 });
 
-export const { getAllSizes } = pizzaSlice.actions;
+export const { getPizza } = pizzaSlice.actions;
 export default pizzaSlice.reducer;
